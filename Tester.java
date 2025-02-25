@@ -6,10 +6,11 @@ public class Tester {
         System.out.println(a);
         System.out.println(b);
         System.out.println(c);
-        Car JBLTOYOTATUNDRA = new Car(5, 9);
+        Car JBLTOYOTATUNDRA = new Car(9, 5);
         System.out.println(JBLTOYOTATUNDRA);
         JBLTOYOTATUNDRA.addPassenger(a);
         System.out.println(JBLTOYOTATUNDRA);
+        System.out.println(JBLTOYOTATUNDRA.unload());
     }
     
 }

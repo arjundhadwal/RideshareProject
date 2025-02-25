@@ -7,6 +7,11 @@ public class Car {
     private ArrayList<Person> passengers;
 
     //constructor
+    /**
+     * Constructor for a car. Each Car contains an array list of passengers, a destination, and a current location.
+     * @param myDest the destination station of the car
+     * @param start the point where the car starts
+     */
     public Car(int myDest, int start){
         destination = myDest;
         currentLocation = start;
@@ -29,7 +34,35 @@ public class Car {
             }
         }
      }
+     /**
+      * Method for handing back a person that is eligible to be dropped off at any station. 
+      * This removes the person from the car as well.
+      * There may be multiple people eligible for drop off, but this only returns the first one.
+      * You may need to run this up to three times if all passengers are eligible to be dropped off.
+      * @return the passenger unloaded, or null if no pass. available
+      */
+     public Person unload(){
+        for(int i = 0; i<passengers.size(); i++){ // loop thru list
+            Person a = passengers.get(i);
+            if (a.getDestination() == currentLocation){
+                return passengers.remove(i);
+            }
+        }
+        return null;
+     }
+
      public boolean hasRoom(){
         return passengers.size()<3;
+     }
+
+     public void move(){
+        if(currentLocation == destination){
+            return; //kicks you out of the method early 
+        }
+        if(direction){
+            currentLocation++;
+        } else {
+            currentLocation--;
+        }
      }
 }
