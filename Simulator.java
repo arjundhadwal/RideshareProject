@@ -2,8 +2,9 @@ import java.util.*;
 public class Simulator { //the main class that contains everything
 
     //fields
-    private ArrayList<Station> stations = new ArrayList<Station>();
-    private ArrayList<Car> cars = new ArrayList<Car>();
+    private Station[] stations;
+    private ArrayList<Car> fleet = new ArrayList<Car>();
+    private static final int NUMSTATIONS = 32;
 
     //constructors
     /**
@@ -12,13 +13,14 @@ public class Simulator { //the main class that contains everything
      * @param carCount The amount of cars to start with. Cars are held inside the Simulator class.
      */
     public Simulator(int carCount){
-        for(int i = 0; i<32; i++){
+        stations = new Station[NUMSTATIONS];
+        for(int i = 0; i<NUMSTATIONS; i++){
             Station s = new Station(i);
-            stations.add(s);
+            stations[i] = s;
         }
         for(int j = 0; j<carCount; j++){
             Car c = new Car((int)(Math.random()*32.0),(int)(Math.random()*32.0));
-            cars.add(c);
+            fleet.add(c);
         }
     }
 
@@ -29,12 +31,31 @@ public class Simulator { //the main class that contains everything
     public void updatePassengers(){
 
     }
+
+    public void populateStations(int numpeople){}
     /**
      * Moves all cars one step in their direction.
      */
     public void moveCars(){
-        for(Car c:cars){
+        for(Car c:fleet){
             c.move();
         }
+    }
+    /**
+     * Returns a string of all cars and stations
+     */
+    public String toString(){
+        String s = "";
+        s+="Stations: \n";
+        for(Station st:stations){
+            s += st.toString();
+            s += "\n";
+        }
+        s+="Cars: \n";
+        for(Car c:fleet){
+            s+=c.toString();
+            s +="\n";
+        }
+        return s;
     }
 }
