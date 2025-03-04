@@ -32,15 +32,51 @@ public class Simulator { //the main class that contains everything
 
     }
 
-    public void populateStations(int numpeople){}
+    public void populate(int numpeople, int numCars){
+        for(int i = 0; i<numpeople; i++){
+            int initialPos =  (int)(Math.random()*32);
+            int destination = (int)(Math.random()*32);
+            stations[initialPos].addPerson(new Person(destination, initialPos));
+        }
+        for(int i = 0; i<numCars; i++){
+            int initialPos2 =  (int)(Math.random()*32);
+            int destination2 = (int)(Math.random()*32);
+            fleet.add(new Car(destination2, initialPos2));
+        }
+    }
     /**
-     * Moves all cars one step in their direction.
+     * Moves and updates stuff
      */
-    public void moveCars(){
+    public void tick(){
+        //unload all people from cars
+        for(Car c: fleet){
+            Person p = c.unload(); //null if no passengers
+            while(true){
+            if(p != null){
+                stations[c.getLocation()].addPerson(p);
+            } else {
+                break;
+            }
+        }
+    }
+        //load all people to cars
+        for(Car c:fleet){
+            if(c.getDirection()){
+                if(stations[c.getLocation()].nextRight() != null){
+                    c.addPassenger(stations[c.getLocation()].nextRight());
+                }
+            } else {
+                if(stations[c.getLocation()].nextLeft() != null){
+                    c.addPassenger(stations[c.getLocation()].nextLeft());
+                }
+            }
+        }
+        //move all the cars
         for(Car c:fleet){
             c.move();
         }
     }
+
     /**
      * Returns a string of all cars and stations
      */

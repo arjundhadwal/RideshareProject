@@ -65,4 +65,11 @@ public class Car {
             currentLocation--;
         }
      }
+     public int getLocation(){
+        return currentLocation;
+     }
+
+     public boolean getDirection(){
+        return direction;
+     }
 }
