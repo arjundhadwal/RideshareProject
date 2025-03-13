@@ -24,14 +24,22 @@ public class Person{
     }
     /**
      * Returns the direction of the person.
+     * @return true if going right, false if going left
      */
     public boolean getDirection(){
         return direction;
     }
+    /**
+     * Returns the starting location of the person.
+     * @return Starting location (station #)
+     */
     public int getStartLoc(){
         return startLoc;
     }
-
+    /**
+     * A string representation of the person.
+     * 
+     */
     public String toString(){
         return super.toString() + "Start:  " + startLoc + " Destination: " +destination + " Going right? "+ direction;
     }
