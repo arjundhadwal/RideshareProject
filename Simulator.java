@@ -29,7 +29,7 @@ public class Simulator { //the main class that contains everything
     public void endOfTheLine(){
         for(Car c: fleet){
             if(c.isAtDestination()){
-                for(int i = 0; i<3; i++){
+                for(int i = 0; i<c.numPassengers(); i++){
                     stations[c.getLocation()].addPerson(c.forceUnload());
                 }
             }
@@ -55,8 +55,8 @@ public class Simulator { //the main class that contains everything
     public void tick(){
         //unload all people from cars
         for(Car c: fleet){
-            Person p = c.unload(); //null if no passengers
             while(true){
+            Person p = c.unload(); //null if no passengers
             if(p != null){
                 stations[c.getLocation()].addPerson(p);
             } else {

@@ -28,7 +28,7 @@ public class Station {
      * @return
      */
     public Person nextLeft(){
-        if(waitingLeft.size()>0){
+        if(waitingLeft.size()>0 && waitingLeft.get(0)!=null){
             return waitingLeft.remove(0);
         } else {
             System.out.println("No one to return in nextLeft");
@@ -37,15 +37,15 @@ public class Station {
     }
 
     public Person getNextLeft(){
-        if(waitingLeft.size()>0){
-            return waitingLeft.remove(0);
+        if(waitingLeft.size()>0 && waitingLeft.get(0)!=null){
+            return waitingLeft.get(0);
         } else {
             return null;
         }
     }
 
     public Person nextRight(){
-        if(waitingRight.size()>0){
+        if(waitingRight.size()>0 && waitingRight.get(0)!=null){
             return waitingRight.remove(0);
         } else {
             System.out.println("No one to return in nextRight");
@@ -54,8 +54,8 @@ public class Station {
     }
 
     public Person getNextRight(){
-        if(waitingRight.size()>0){
-            return waitingRight.remove(0);
+        if(waitingRight.size()>0 && waitingRight.get(0)!=null){
+            return waitingRight.get(0);
         } else {
             return null;
         }

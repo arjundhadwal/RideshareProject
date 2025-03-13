@@ -57,7 +57,7 @@ public class Car {
       * @return one kicked passenger
       */
      public Person forceUnload(){
-        if(passengers.get(0) != null){
+        if(passengers.size()>0){
         return passengers.remove(0);
         } else {
             return null; //avoiding an error here?
@@ -88,6 +88,10 @@ public class Car {
 
      public boolean isAtDestination(){
         return currentLocation == destination;
+     }
+
+     public int numPassengers(){
+        return passengers.size();
      }
         
      }
