@@ -14,11 +14,11 @@ public class Station {
     }
 
     public void addPerson(Person p){
-        if(p.getDestination() == number){
+        if(p!=null && p.getDestination() == number){
             completed.add(p);
-        } else if (p.getDirection()){
+        } else if (p!=null && p.getDirection()){
             waitingRight.add(p);
-        } else {
+        } else if(p!=null){
             waitingLeft.add(p);
         }
     }

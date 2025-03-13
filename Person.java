@@ -25,6 +25,6 @@ public class Person{
         return startLoc;
     }
     public String toString(){
-        return super.toString() + "Start:  " + startLoc + " Destination: " +destination + "Going right? "+ direction;
+        return super.toString() + "Start:  " + startLoc + " Destination: " +destination + " Going right? "+ direction;
     }
 }

@@ -27,7 +27,7 @@ public class Car {
         if(passengers.size() >= 3){
             System.out.println("Error, no room");
         } else {
-            if(p.getDirection() == direction){
+            if(p!=null && p.getDirection() == direction){
             passengers.add(p);
             } else {
                 System.out.println("ERROR: person being added in wrong direction");
@@ -55,7 +55,7 @@ public class Car {
       * @return one kicked passenger
       */
      public Person forceUnload(){
-        if(passengers.get(0)!=null){
+        if(passengers.size()>0){
         return passengers.remove(0);
         } else {
             return null; //avoiding an error here?
