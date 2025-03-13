@@ -63,9 +63,9 @@ public class Station {
 
     public String toString(){
         String s = "Station: "+number+"\n";
-        s+= "Leftbound: "+waitingLeft.toString()+"\n";
+        s+= "Leftbound:  "+waitingLeft.toString()+"\n";
         s+="Rightbound: "+waitingRight.toString()+"\n";
-        s+="Completed: "+completed.toString();
+        s+="Completed:  "+completed.toString();
         return s;
     }
 }
