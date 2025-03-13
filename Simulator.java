@@ -4,7 +4,7 @@ public class Simulator { //the main class that contains everything
     //fields
     private Station[] stations;
     private ArrayList<Car> fleet = new ArrayList<Car>();
-    private static final int NUMSTATIONS = 32;
+    private static final int NUMSTATIONS = 32; //Number of stations to generate
 
     //constructors
     /**
@@ -19,17 +19,23 @@ public class Simulator { //the main class that contains everything
             stations[i] = s;
         }
         for(int j = 0; j<carCount; j++){
-            Car c = new Car((int)(Math.random()*32.0),(int)(Math.random()*32.0));
+            Car c = new Car((int)(Math.random()*(double)NUMSTATIONS),(int)(Math.random()*(double)NUMSTATIONS));
             fleet.add(c);
         }
     }
 
     //methods
     /**
-     * Loads and unloads passengers appropriately.
+     * Unloads passengers appropriately upon a car reaching its destination
      */
-    public void updatePassengers(){
-
+    public void endOfTheLine(){
+        for(Car c: fleet){
+            if(c.isAtDestination()){
+                for(int i = 0; i<3; i++){
+                    stations[c.getLocation()].addPerson(c.forceUnload());
+                }
+            }
+        }
     }
 
     public void populate(int numpeople, int numCars){
@@ -57,7 +63,7 @@ public class Simulator { //the main class that contains everything
             } else {
                 break;
             }
-        }
+            }
     }
         //load all people to cars
         for(Car c:fleet){

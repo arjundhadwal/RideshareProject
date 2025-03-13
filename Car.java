@@ -50,6 +50,17 @@ public class Car {
         }
         return null;
      }
+     /**
+      * Kicks passengers onto the station even if it is not their destination. Must be executed thrice.
+      * @return one kicked passenger
+      */
+     public Person forceUnload(){
+        if(passengers.get(0)!=null){
+        return passengers.remove(0);
+        } else {
+            return null; //avoiding an error here?
+        }
+     }
 
      public boolean hasRoom(){
         return passengers.size()<3;
@@ -72,4 +83,10 @@ public class Car {
      public boolean getDirection(){
         return direction;
      }
-}
+
+     public boolean isAtDestination(){
+        return currentLocation == destination;
+     }
+        
+     }
+
