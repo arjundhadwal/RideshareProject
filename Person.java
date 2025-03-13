@@ -4,6 +4,11 @@ public class Person{
     private int destination; 
     private int startLoc;
     //constructors
+    /**
+     * The Person object. 
+     * @param myDestination destination that the person is trying to reach
+     * @param myStartingLoc starting location that the person starts from
+     */
     public Person(int myDestination, int myStartingLoc){
         destination = myDestination;
         startLoc = myStartingLoc;

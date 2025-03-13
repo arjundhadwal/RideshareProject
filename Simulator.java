@@ -10,15 +10,16 @@ public class Simulator { //the main class that contains everything
     /**
      * This is the simulator object. It contains everything that runs the Rideshare project and all methods relating to the project run through Main are attached to this object alone.
      * There are 32 stations, with indexes 0-31.
-     * @param carCount The amount of cars to start with. Cars are held inside the Simulator class.
+     *
      */
-    public Simulator(int carCount){
+    public Simulator(){
         fleet = new ArrayList<Car>();
         stations = new Station[NUMSTATIONS];
         for(int i = 0; i<NUMSTATIONS; i++){
             Station s = new Station(i);
             stations[i] = s;
         }
+        System.out.println("Simulator initiated");
     }
 
     //methods
@@ -36,16 +37,17 @@ public class Simulator { //the main class that contains everything
     }
 
     public void populate(int numpeople, int numCars){
-        for(int i = 0; i<numpeople; i++){
-            int initialPos =  (int)(Math.random()*(double)NUMSTATIONS);
-            int destination = (int)(Math.random()*(double)NUMSTATIONS);
-            stations[initialPos].addPerson(new Person(destination, initialPos));
-        }
         for(int i = 0; i<numCars; i++){
             int initialPos2 =  (int)(Math.random()*(double)NUMSTATIONS);
             int destination2 = (int)(Math.random()*(double)NUMSTATIONS);
             fleet.add(new Car(destination2, initialPos2));
         }
+        for(int i = 0; i<numpeople; i++){
+            int initialPos =  (int)(Math.random()*(double)NUMSTATIONS);
+            int destination = (int)(Math.random()*(double)NUMSTATIONS);
+            stations[initialPos].addPerson(new Person(destination, initialPos));
+        }
+        System.out.println("Successfully populated Simulator with people and cars");
     }
     /**
      * Moves and updates stuff
