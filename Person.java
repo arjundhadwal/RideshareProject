@@ -15,9 +15,16 @@ public class Person{
         direction = (destination>startLoc);
         }
     //methods
+    /**
+     * Returns the destination of the person.
+     * @return the destination station number.
+     */
     public int getDestination(){
         return destination;
     }
+    /**
+     * Returns the direction of the person.
+     */
     public boolean getDirection(){
         return direction;
     }

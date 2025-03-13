@@ -9,7 +9,7 @@ public class Simulator { //the main class that contains everything
     //constructors
     /**
      * This is the simulator object. It contains everything that runs the Rideshare project and all methods relating to the project run through Main are attached to this object alone.
-     * There are 32 stations, with indexes 0-31.
+     * There are 32 stations, with indexes 0-31. The constructor only spawns stations; the populate method must be used to add in passengers and cars.
      *
      */
     public Simulator(){
@@ -24,7 +24,7 @@ public class Simulator { //the main class that contains everything
 
     //methods
     /**
-     * Unloads passengers appropriately upon a car reaching its destination, if the car reaches its destination before a passenger it might bug.
+     * Unloads passengers appropriately upon a car reaching its destination. This method is used to kick passengers out of the car so they don't get "stuck" inside the car before reaching their destination.
      */
     public void endOfTheLine(){
         for(Car c: fleet){
@@ -35,7 +35,11 @@ public class Simulator { //the main class that contains everything
             }
         }
     }
-
+    /**
+     * This method spawns a specified amount of people and cars into the simulation, both having random starting points and destinations.
+     * @param numpeople The amount of people to spawn.
+     * @param numCars The amount of cars to spawn.
+     */
     public void populate(int numpeople, int numCars){
         for(int i = 0; i<numCars; i++){
             int initialPos2 =  (int)(Math.random()*(double)NUMSTATIONS);
@@ -50,10 +54,10 @@ public class Simulator { //the main class that contains everything
         System.out.println("Successfully populated Simulator with people and cars");
     }
     /**
-     * Moves and updates stuff
+     * Unloads arriving passengers, loads departing passengers appropriately, checks for completed cars, and then moves the cars by one step. This is the simulator's "runner" method used in the tester.
      */
     public void tick(){
-        //unload all people from cars
+        //unload people from cars
         for(Car c: fleet){
             while(true){
             Person p = c.unload(); //null if no passengers
@@ -64,7 +68,7 @@ public class Simulator { //the main class that contains everything
             }
             }
     }
-        //load all people to cars
+        //load people to cars
         for(Car c:fleet){
             if(c.getDirection()){
                 if(stations[c.getLocation()].getNextRight() != null){
@@ -79,7 +83,7 @@ public class Simulator { //the main class that contains everything
                 }
             }
         }
-        //check for completed cars, move all the cars
+        //check for completed cars, then move all the cars
         for(Car c:fleet){
              endOfTheLine();
             c.move();
@@ -87,7 +91,8 @@ public class Simulator { //the main class that contains everything
     }
 
     /**
-     * Returns a string of all cars and stations
+     * Returns a string representation of the simulator, displaying the status of all people, cars, and stations.
+     * @return A string representation of the Simulator.
      */
     public String toString(){
         String s = "";
