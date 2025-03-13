@@ -3,7 +3,7 @@ public class Simulator { //the main class that contains everything
 
     //fields
     private Station[] stations;
-    private ArrayList<Car> fleet = new ArrayList<Car>();
+    private ArrayList<Car> fleet;
     private static final int NUMSTATIONS = 32; //Number of stations to generate
 
     //constructors
@@ -13,14 +13,11 @@ public class Simulator { //the main class that contains everything
      * @param carCount The amount of cars to start with. Cars are held inside the Simulator class.
      */
     public Simulator(int carCount){
+        fleet = new ArrayList<Car>();
         stations = new Station[NUMSTATIONS];
         for(int i = 0; i<NUMSTATIONS; i++){
             Station s = new Station(i);
             stations[i] = s;
-        }
-        for(int j = 0; j<carCount; j++){
-            Car c = new Car((int)(Math.random()*(double)NUMSTATIONS),(int)(Math.random()*(double)NUMSTATIONS));
-            fleet.add(c);
         }
     }
 
@@ -40,13 +37,13 @@ public class Simulator { //the main class that contains everything
 
     public void populate(int numpeople, int numCars){
         for(int i = 0; i<numpeople; i++){
-            int initialPos =  (int)(Math.random()*32);
-            int destination = (int)(Math.random()*32);
+            int initialPos =  (int)(Math.random()*(double)NUMSTATIONS);
+            int destination = (int)(Math.random()*(double)NUMSTATIONS);
             stations[initialPos].addPerson(new Person(destination, initialPos));
         }
         for(int i = 0; i<numCars; i++){
-            int initialPos2 =  (int)(Math.random()*32);
-            int destination2 = (int)(Math.random()*32);
+            int initialPos2 =  (int)(Math.random()*(double)NUMSTATIONS);
+            int destination2 = (int)(Math.random()*(double)NUMSTATIONS);
             fleet.add(new Car(destination2, initialPos2));
         }
     }
@@ -77,8 +74,9 @@ public class Simulator { //the main class that contains everything
                 }
             }
         }
-        //move all the cars
+        //check for completed cars, move all the cars
         for(Car c:fleet){
+            endOfTheLine();
             c.move();
         }
     }
