@@ -26,7 +26,7 @@ public class Car {
      public void addPassenger(Person p){
         if(passengers.size() >= 3){
             System.out.println("Error, no room");
-        } else {
+        } else if (p!=null) {
             if(p.getDirection() == direction){ //failing this every time?
             passengers.add(p);
             } else {

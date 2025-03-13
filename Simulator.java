@@ -24,7 +24,7 @@ public class Simulator { //the main class that contains everything
 
     //methods
     /**
-     * Unloads passengers appropriately upon a car reaching its destination
+     * Unloads passengers appropriately upon a car reaching its destination, if the car reaches its destination before a passenger it might bug.
      */
     public void endOfTheLine(){
         for(Car c: fleet){
@@ -67,12 +67,13 @@ public class Simulator { //the main class that contains everything
         //load all people to cars
         for(Car c:fleet){
             if(c.getDirection()){
-                if(stations[c.getLocation()].nextRight() != null){
+                if(stations[c.getLocation()].getNextRight() != null){
                     Person pToAdd = stations[c.getLocation()].nextRight();
+                    System.out.println(pToAdd.toString()); //for debug purposes
                     c.addPassenger(pToAdd);
                 }
             } else {
-                if(stations[c.getLocation()].nextLeft() != null){
+                if(stations[c.getLocation()].getNextLeft() != null){
                     Person pToAdd2 = (stations[c.getLocation()].nextLeft());
                     c.addPassenger(pToAdd2);
                 }
@@ -80,7 +81,7 @@ public class Simulator { //the main class that contains everything
         }
         //check for completed cars, move all the cars
         for(Car c:fleet){
-            endOfTheLine();
+             endOfTheLine();
             c.move();
         }
     }

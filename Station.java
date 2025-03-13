@@ -14,11 +14,11 @@ public class Station {
     }
 
     public void addPerson(Person p){
-        if(p!=null && p.getDestination() == number){
+        if(p.getDestination() == number){
             completed.add(p);
-        } else if (p!=null && p.getDirection()){
+        } else if (p.getDirection()){
             waitingRight.add(p);
-        } else if(p!=null){
+        } else {
             waitingLeft.add(p);
         }
     }
@@ -36,11 +36,27 @@ public class Station {
         }
     }
 
+    public Person getNextLeft(){
+        if(waitingLeft.size()>0){
+            return waitingLeft.remove(0);
+        } else {
+            return null;
+        }
+    }
+
     public Person nextRight(){
         if(waitingRight.size()>0){
             return waitingRight.remove(0);
         } else {
             System.out.println("No one to return in nextRight");
+            return null;
+        }
+    }
+
+    public Person getNextRight(){
+        if(waitingRight.size()>0){
+            return waitingRight.remove(0);
+        } else {
             return null;
         }
     }
