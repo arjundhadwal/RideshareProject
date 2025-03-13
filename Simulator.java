@@ -68,11 +68,13 @@ public class Simulator { //the main class that contains everything
         for(Car c:fleet){
             if(c.getDirection()){
                 if(stations[c.getLocation()].nextRight() != null){
-                    c.addPassenger(stations[c.getLocation()].nextRight());
+                    Person pToAdd = stations[c.getLocation()].nextRight();
+                    c.addPassenger(pToAdd);
                 }
             } else {
                 if(stations[c.getLocation()].nextLeft() != null){
-                    c.addPassenger(stations[c.getLocation()].nextLeft());
+                    Person pToAdd2 = (stations[c.getLocation()].nextLeft());
+                    c.addPassenger(pToAdd2);
                 }
             }
         }

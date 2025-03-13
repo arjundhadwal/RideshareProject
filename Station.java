@@ -31,6 +31,7 @@ public class Station {
         if(waitingLeft.size()>0){
             return waitingLeft.remove(0);
         } else {
+            System.out.println("No one to return in nextLeft");
             return null;
         }
     }
@@ -39,6 +40,7 @@ public class Station {
         if(waitingRight.size()>0){
             return waitingRight.remove(0);
         } else {
+            System.out.println("No one to return in nextRight");
             return null;
         }
     }

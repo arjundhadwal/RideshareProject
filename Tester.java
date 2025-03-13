@@ -3,6 +3,7 @@ public class Tester {
         Simulator s = new Simulator();
         s.populate(10, 5);
         for(int i = 0; i<32; i++){
+            System.out.println("Cycle: "+i);
             s.tick();
             System.out.println(s.toString());
         }
