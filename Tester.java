@@ -8,17 +8,31 @@ public class Tester {
     int carTestRange_HIGH = input.nextInt();
     System.out.println("Input # of passsengers to spawn");
     int numpass = input.nextInt();
-    double maximumValue = 0;
-    int carsatMaximumValue = 0;
+    double maximumValue = 0; //highest value of people per car
+    int carsatMaximumValue = 0; //how many cars at best people per car
+    int maxProfit = 0;
+    int profit = 0; //profit value
+    int carsatMaxProfit = 0;
+    int carCost = 1; //cost of the car to operate
+    int passengerRevenue = 2; //money gained from ferrying passengers to their station succesffully
+
     for(int i = carTestRange_LOW; i<=carTestRange_HIGH; i++){ //looping through simulations and saving values when appropriate
         double passcomp = runTrial(32, numpass, i);
         if((passcomp/(double)i)>maximumValue){
             maximumValue = passcomp/i;
             carsatMaximumValue = i;
         }
+        profit = (int)passcomp*passengerRevenue - i*carCost;
+        if(profit>maxProfit){
+            maxProfit = profit;
+            carsatMaxProfit = i;
+        }
         System.out.println("Ran test with "+i+" cars, passengers transported per car equals "+passcomp/i+" with "+numpass+" passengers in the simulation");
+        System.out.println(profit+" dollars earned");
+        System.out.println();
     }
-    System.out.println("Most ideal number of cars = "+carsatMaximumValue+" transporting "+maximumValue+" passengers per car.");
+    System.out.println("Most efficient number of cars = "+carsatMaximumValue+" transporting "+maximumValue+" passengers per car.");
+    System.out.println("Most profitable car count: "+carsatMaxProfit+" making $"+maxProfit+" for the rideshare company");
     input.close();
     }
     /**
@@ -33,7 +47,7 @@ public class Tester {
         Simulator p = new Simulator(); //Creating the simulator
         p.populate(numPassengers, numCars); //creating 10 people and 5 cars
         for(int i = 1; i<=NUMCYCLES; i++){ //looping the tick several times
-            System.out.println("Cycle: "+i);
+            //System.out.println("Cycle: "+i);
             p.tick();
         }
         int pc = p.passCompletedTotal();
