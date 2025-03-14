@@ -5,17 +5,20 @@ public class Station {
     private ArrayList<Person> waitingRight;
     private ArrayList<Person> completed;
     private int number; //station ID
+    private int passengersCompleted;
 
     public Station(int myNumber){
         number = myNumber;
         waitingLeft = new ArrayList<Person>();
         waitingRight = new ArrayList<Person>();
         completed = new ArrayList<Person>();
+        passengersCompleted = 0;
     }
 
     public void addPerson(Person p){
         if(p.getDestination() == number){
             completed.add(p);
+            passengersCompleted++;
         } else if (p.getDirection()){
             waitingRight.add(p);
         } else {
@@ -79,5 +82,9 @@ public class Station {
         s+="Rightbound: "+waitingRight.toString()+"\n";
         s+="Completed:  "+completed.toString();
         return s;
+    }
+
+    public int getPassCompleted(){
+        return passengersCompleted;
     }
 }

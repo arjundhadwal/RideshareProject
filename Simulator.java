@@ -108,4 +108,16 @@ public class Simulator { //the main class that contains everything
         }
         return s;
     }
+    /**
+     * Returns a double value 0-1 representing the average number of passengers who made it to their destinaton per car spawned in with the populate method. This is intended to be use to optimize the number of cars for maxiumum profit with the lowest costs.
+     * @return double value 0-1
+     */
+    public double passCompletedPerCar(){
+        int sum = 0;
+        for(Station s: stations){
+            sum+=s.getPassCompleted();
+        }
+        double passPerCar = sum/fleet.size();
+        return passPerCar;
+    }
 }
