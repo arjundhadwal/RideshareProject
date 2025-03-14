@@ -31,8 +31,10 @@ public class Tester {
         System.out.println(profit+" dollars earned");
         System.out.println();
     }
+    System.out.println("--------SUMMARY--------");
     System.out.println("Most efficient number of cars = "+carsatMaximumValue+" transporting "+maximumValue+" passengers per car.");
     System.out.println("Most profitable car count: "+carsatMaxProfit+" making $"+maxProfit+" for the rideshare company");
+    System.out.println("-----------------------");
     input.close();
     }
     /**
