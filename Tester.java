@@ -11,7 +11,7 @@ public class Tester {
     double maximumValue = 0;
     int carsatMaximumValue = 0;
     for(int i = carTestRange_LOW; i<=carTestRange_HIGH; i++){ //looping through simulations and saving values when appropriate
-        double passcomp = runTrial(64, numpass, i);
+        double passcomp = runTrial(32, numpass, i);
         if((passcomp/(double)i)>maximumValue){
             maximumValue = passcomp/i;
             carsatMaximumValue = i;
