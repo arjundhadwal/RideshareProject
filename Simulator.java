@@ -73,7 +73,7 @@ public class Simulator { //the main class that contains everything
             if(c.getDirection()){
                 if(stations[c.getLocation()].getNextRight() != null){
                     Person pToAdd = stations[c.getLocation()].nextRight();
-                    System.out.println(pToAdd.toString()); //for debug purposes
+                    //System.out.println(pToAdd.toString()); //for debug purposes
                     c.addPassenger(pToAdd);
                 }
             } else {
