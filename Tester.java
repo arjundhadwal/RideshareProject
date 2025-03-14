@@ -2,7 +2,7 @@ import java.util.*;
 public class Tester {
     public static void main(String[] args){ //The main method runs a loop to optimize number of cars to passengers completed.
     Scanner input = new Scanner(System.in);
-    System.out.println("Input the lower limit of the number of cars to optimize"); //Scanning for custom parameters
+    System.out.println("Input the lower limit of the number of cars to optimize. Recommended at least 5 so that the program does not use only one car to cut costs the most."); //Scanning for custom parameters
     int carTestRange_LOW = input.nextInt();
     System.out.println("Input the upper limit of the number of cars to optimize");
     int carTestRange_HIGH = input.nextInt();
@@ -12,7 +12,7 @@ public class Tester {
     int carsatMaximumValue = 0;
     for(int i = carTestRange_LOW; i<=carTestRange_HIGH; i++){ //looping through simulations and saving values when appropriate
         double passcomp = runTrial(64, numpass, i);
-        if(passcomp/(double)i>maximumValue){
+        if((passcomp/(double)i)>maximumValue){
             maximumValue = passcomp/i;
             carsatMaximumValue = i;
         }
