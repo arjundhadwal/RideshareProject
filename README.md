@@ -12,6 +12,10 @@ What I found from my "profit analysis" algorithm was that the results were quite
 
 **However, due to the randomness of the situations, I decided to run more tests with a much higher passenger count and car count range to see what the data shows. This is because the greater number of variables makes the situation more likely to reflect the actual math at play behind the scenes.** So, I decided to run tests with a range of 125-375 cars and 500 passengers. Here are the results after eight trials:
 
+**Mean most efficient car count: 132.625**
+
+**Mean most proftable car count: 215.375**
+
 Notably, in my second testing range, the groupings of most profitable car count were proportionally much smaller than in the first testing sequence. Efficiency groupings were also improved and more concentrated, and cars consistently transported about 2.2 passengers per at peak efficiency. Randomness was still a factor, but the greater car count seemed to lessen it significantly.
 
 The average "most profitable" car count was, on average, 215.375 cars (in a range of 125-375 and with 500 passengers generated). I suspect that this number is more a function of passenger count than car count, as in the previous test the most profitable car count was around 1/2 the passenger count. In this case, each car earned around 2 dollars.
