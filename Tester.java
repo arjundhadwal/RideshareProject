@@ -12,10 +12,12 @@ public class Tester {
     int numpass = input.nextInt();
     double maximumValue = 0; //highest value of people per car
     int carsatMaximumValue = 0; //how many cars at best people per car
+
     int maxProfit = 0; //maximum profit value saved here
     int profit = 0; //profit value
     int carsatMaxProfit = 0; //car count at the maximum profit value
-    int carCost = 1; //cost of the car to operate
+
+    int carCost = 1; //cost of the car to operate, can be changed
     int passengerRevenue = 2; //money gained from ferrying passengers to their station succesffully
 
     for(int i = carTestRange_LOW; i<=carTestRange_HIGH; i++){ //looping through simulations and saving values when appropriate
@@ -51,6 +53,7 @@ public class Tester {
             System.out.println(p.toString());
         }
         input.close();
+        System.out.println("Out of "+pCount+" passengers spawned, "+p.passCompletedTotal()+" made it to their destinations, indicating a "+(double)p.passCompletedTotal()/(double)pCount*100.0+" percent success rate.");
     }
 }
     /**
@@ -69,7 +72,7 @@ public class Tester {
             p.tick();
         }
         int pc = p.passCompletedTotal();
-        System.out.println(pc+" passengers succesfully transported per car @ "+numCars+" cars and "+numPassengers+" passengers");
+        System.out.println(pc+" passengers succesfully transported @ "+numCars+" cars and "+numPassengers+" passengers, "+pc/(double)numPassengers*100+"% of all passengers successfully transported");
         return pc;
     }
     
