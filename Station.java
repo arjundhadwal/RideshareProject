@@ -83,7 +83,10 @@ public class Station {
         s+="Completed:  "+completed.toString();
         return s;
     }
-
+    /**
+     * Gets the count of passengers in the Completed list
+     * @return passengers who have arrived at this station as their destination
+     */
     public int getPassCompleted(){
         return passengersCompleted;
     }

@@ -109,8 +109,8 @@ public class Simulator { //the main class that contains everything
         return s;
     }
     /**
-     * Returns a double value 0-1 representing the average number of passengers who made it to their destinaton per car spawned in with the populate method. This is intended to be use to optimize the number of cars for maxiumum profit with the lowest costs.
-     * @return double value 0-1
+     * Returns a sum of the count of passengers in all completed lists in all stations
+     * @return int value that is a count of all arrived passengers
      */
     public int passCompletedTotal(){
         int sum = 0;

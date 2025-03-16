@@ -22,11 +22,11 @@ public class Tester {
 
     for(int i = carTestRange_LOW; i<=carTestRange_HIGH; i++){ //looping through simulations and saving values when appropriate
         double passcomp = runTrial(32, numpass, i);
-        if((passcomp/(double)i)>maximumValue){
+        if((passcomp/(double)i)>maximumValue){ //max efficiency value loop
             maximumValue = passcomp/i;
             carsatMaximumValue = i;
         }
-        profit = (int)passcomp*passengerRevenue - i*carCost;
+        profit = (int)passcomp*passengerRevenue - i*carCost; //max profit loop
         if(profit>maxProfit){
             maxProfit = profit;
             carsatMaxProfit = i;
@@ -63,7 +63,7 @@ public class Tester {
      * @param numCars the amount of cars to be spawned (run a loop to optimize)
      * @return the int value representing how many passengers get successfully transported
      */
-    public static int runTrial(int cycles, int numPassengers, int numCars){
+    private static int runTrial(int cycles, int numPassengers, int numCars){
         int NUMCYCLES = cycles; //number of cycles or "ticks" in the simulator 
         Simulator p = new Simulator(); //Creating the simulator
         p.populate(numPassengers, numCars); //creating people and cars
